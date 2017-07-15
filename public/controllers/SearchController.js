@@ -5,6 +5,7 @@ appControllers.controller('SearchController',function($scope,Area,Search){
 	$scope.areas=[];
 	$scope.selectedArea=null;
 	$scope.search={term:null,search_results:[]};
+	$scope.ratings={rate:3.5};
 
      Area.getAreas()
          .then(function(result){

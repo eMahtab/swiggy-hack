@@ -1,4 +1,4 @@
-var app=angular.module('swiggyHack',['ui.router','app.constants','app.service','app.controllers']);
+var app=angular.module('swiggyHack',['ui.router','app.constants','app.service','app.controllers','ngRateIt']);
 
 
 app.config(function($stateProvider, $urlRouterProvider) {

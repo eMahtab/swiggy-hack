@@ -49,9 +49,12 @@
                    <h4>&nbsp;{{r._fields[0].properties.name}}</h4>
                  <img class="img-responsive" height="250" width="250" 
                    ng-src="{{'images/'+search.term+'/'+$index+'.jpg'}}"/>
-                   <h4>&nbsp;&nbsp;&nbsp;{{r._fields[1].properties.price.low}}</h4>
+                   <h4>&nbsp;&nbsp;&nbsp;{{r._fields[1].properties.price.low}} 
+                       <i class="icon-inr"></i>
+                   </h4>
                    <div class="caption">
                      <p>hhdhh</p>
+                     <ng-rate-it max="5" read-only="true" ng-model="ratings.rate"></ng-rate-it>
                    </div>
                    
                 </div> 

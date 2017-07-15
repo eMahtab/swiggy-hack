@@ -19,8 +19,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.6.5",    
-    "angular-ui-router": "^1.0.5"
+    "angular": "^1.6.5",
+    "angular-ui-router": "^1.0.5",
+    "angular-rateit": "^3.0.4"
   }
-  
 }
