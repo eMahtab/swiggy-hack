@@ -26,11 +26,30 @@ var session = driver.session();
 });
 */
 
-app.get('/city/:name/areas',function(req,res){
+app.get('/city/:name/areas',function(req,res){	
 	session.run('MATCH (n:Location) RETURN n')
            .then(function(result){
            	 
            	  /*result.records.forEach(function(record){
+           	  	console.log(JSON.stringify(record._fields[0]))
+           	  	res.status(200).send(JSON.stringify(record._fields[0]))
+           	  })*/
+           	  res.status(200).send(result.records);
+           })
+           .catch(function(err){
+           	console.log("Error "+err);
+           })
+})
+
+
+app.get('/city/:name/area/:areaName',function(req,res){
+	 console.log("Area name "+req.params.areaName+" looking for "+req.query.search);
+	 session.run(' MATCH (area:Location{location:"'+req.params.areaName+'"})  '+
+	 	         ' MATCH (area)-[:at]->(k:Restaurant) ' +
+	 	         ' MATCH (k) -[:serves]-> (item:'+req.query.search+') return k,item')
+           .then(function(result){
+           	 
+           	 /* result.records.forEach(function(record){
            	  	console.log(JSON.stringify(record._fields[0]))
            	  	res.status(200).send(JSON.stringify(record._fields[0]))
            	  })*/

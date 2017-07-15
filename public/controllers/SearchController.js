@@ -1,9 +1,10 @@
 var appControllers=angular.module('app.controllers',[]);
 
-appControllers.controller('SearchController',function($scope,Area){
+appControllers.controller('SearchController',function($scope,Area,Search){
 
 	$scope.areas=[];
 	$scope.selectedArea=null;
+	$scope.search={term:null,search_results:[]};
 
      Area.getAreas()
          .then(function(result){
@@ -24,7 +25,20 @@ appControllers.controller('SearchController',function($scope,Area){
 
     $scope.searchIt = function(keyEvent){
     	if(keyEvent.which === 13){
-    		console.log("Awesome")
+    		console.log("Lets search "+$scope.selectedArea+" "+$scope.search.term)
+            Search.getResult($scope.selectedArea,$scope.search.term)
+                  .then(function(result){
+                  	console.log("Oye "+JSON.stringify(result.data));
+                  	$scope.search.search_results=result.data;
+                  	/*result.data.forEach(function(item){
+                      $scope.search.search_results.push(item._fields[0]);
+                  	})*/
+                  	console.log("Oye 2 "+JSON.stringify($scope.search.search_results));
+                  })
+                  .catch(function(err){
+                  	console.log("Error "+err);
+                  })
+
     	}
     	console.log("Searching ... "+keyEvent)
     }    
