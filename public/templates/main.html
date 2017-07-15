@@ -53,8 +53,10 @@
                        <i class="icon-inr"></i>
                    </h4>
                    <div class="caption">
-                     <p>hhdhh</p>
-                     <ng-rate-it max="5" read-only="true" ng-model="ratings.rate"></ng-rate-it>
+                     <p>{{r._fields[1].properties.name}}</p>
+                     <ng-rate-it max="5" read-only="true" 
+                                 ng-model=" (r._fields[1].properties.rating.low /2) ">
+                       </ng-rate-it>
                    </div>
                    
                 </div> 
