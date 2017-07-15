@@ -1,0 +1,21 @@
+{
+  "name": "swiggy-hack",
+  "description": "Swiggy hackathrone",
+  "main": "app.js",
+  "authors": [
+    "Mahtab Alam <alammahtab08@gmail.com> (http://www.mahtabalam.net)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "swiggy"
+  ],
+  "homepage": "https://github.com/eMahtab/swiggy-hack",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public",
+    "test",
+    "tests"
+  ]
+}
