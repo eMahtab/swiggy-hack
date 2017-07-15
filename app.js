@@ -26,6 +26,21 @@ var session = driver.session();
 });
 */
 
+app.get('/city/:name/areas',function(req,res){
+	session.run('MATCH (n:Location) RETURN n')
+           .then(function(result){
+           	 
+           	  /*result.records.forEach(function(record){
+           	  	console.log(JSON.stringify(record._fields[0]))
+           	  	res.status(200).send(JSON.stringify(record._fields[0]))
+           	  })*/
+           	  res.status(200).send(result.records);
+           })
+           .catch(function(err){
+           	console.log("Error "+err);
+           })
+})
+
 app.get('/',function(req,res){
 	res.sendFile('index.html',{ root: __dirname });
 })
