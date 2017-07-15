@@ -17,5 +17,10 @@
     "public",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "angular-ui-router": "^1.0.5"
+  }
 }
