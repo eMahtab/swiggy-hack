@@ -42,10 +42,41 @@
 
    </form>
     <br/><br/><br/>
+
+    
+    <div ng-show="show_search_options" class="row">   
+        <div class=" col-md-2">
+            <div style="margin-left: 10px;" class="panel panel-default">
+                <div class="panel-body">
+                    <div>
+                      <h5>Choose Restaurant</h5>
+                       <label  ng-repeat="x in search.search_results">
+                         <input ng-model="checked" ng-init="checked=true" 
+                                type="checkbox" value="{{x._fields[0].properties.name}}">
+                           &nbsp;&nbsp;{{x._fields[0].properties.name}}
+                       </label>
+                    </div>
+                    <hr/>
+
+                    <div>
+                     <h5>Choose Price Range</h5>
+                      <label style="margin-left:10px" ng-repeat="y in sorted_prices_range">                      
+                         <input ng-model="checked" ng-init="checked=false" 
+                                type="checkbox" value="{{y.value}}">
+                           &nbsp;&nbsp;{{y.msg}}<br/>
+                       </label>
+                        <br/>
+                    </div>
+                </div>
+             </div> 
+        </div>
+    </div>
+
+
      <div class="row">
         <div class="col-md-12">
-            <div class=""> 
-                <div class="col-md-offset-1 col-md-3 thumbnail" ng-repeat="r in search.search_results">
+            <div class="col-md-offset-3"> 
+                <div class="col-md-3 thumbnail" ng-repeat="r in search.search_results">
                    <h4>&nbsp;{{r._fields[0].properties.name}}</h4>
                  <img class="img-responsive" height="250" width="250" 
                    ng-src="{{'images/'+search.term+'/'+$index+'.jpg'}}"/>
@@ -59,7 +90,7 @@
                        </ng-rate-it>
                    </div>
                    
-                </div> 
+                </div> &nbsp;&nbsp;
             </div>
         </div>  
      </div>

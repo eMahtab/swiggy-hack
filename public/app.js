@@ -1,4 +1,5 @@
-var app=angular.module('swiggyHack',['ui.router','app.constants','app.service','app.controllers','ngRateIt']);
+var app=angular.module('swiggyHack',['ui.router','app.constants','app.service','app.controllers','ngRateIt',
+	'ui-rangeSlider']);
 
 
 app.config(function($stateProvider, $urlRouterProvider) {

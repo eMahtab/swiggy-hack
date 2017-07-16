@@ -5,7 +5,37 @@ appControllers.controller('SearchController',function($scope,Area,Search){
 	$scope.areas=[];
 	$scope.selectedArea=null;
 	$scope.search={term:null,search_results:[]};
-	$scope.ratings={rate:3.5};
+	
+	$scope.sorted_prices=[];
+	$scope.show_search_options=false;
+	$scope.sorted_prices_range=[];
+	
+
+	function sortNumber(a,b) {
+      return a - b;
+    }
+
+	function sortPriceWise(){
+		console.log("For Sorting "+JSON.stringify($scope.search.search_results));
+		$scope.search.search_results.forEach(function(i){
+			console.log("Adding "+i._fields[1].properties.price.low)
+            $scope.sorted_prices.push(i._fields[1].properties.price.low) 
+            $scope.sorted_prices.sort(sortNumber);            
+		})
+        console.log("After Sort "+$scope.sorted_prices)
+        var x;
+        for(x=0;x<$scope.sorted_prices.length;x++){
+           if(x==0){
+           	$scope.sorted_prices_range[0]={"value":$scope.sorted_prices[0],"msg":"Under "+$scope.sorted_prices[0]}
+           }else {
+           	$scope.sorted_prices_range[x]={"value":$scope.sorted_prices[x],
+           	                               "msg":$scope.sorted_prices[x-1]+"-"+$scope.sorted_prices[x]}
+           }
+           console.log("Array "+JSON.stringify($scope.sorted_prices_range[x]));
+        }
+        
+
+	}
 
      Area.getAreas()
          .then(function(result){
@@ -34,6 +64,10 @@ appControllers.controller('SearchController',function($scope,Area,Search){
                   	/*result.data.forEach(function(item){
                       $scope.search.search_results.push(item._fields[0]);
                   	})*/
+                  	if(result.data.length > 0){
+                  		$scope.show_search_options=true;
+                  	}
+                  	sortPriceWise();
                   	console.log("Oye 2 "+JSON.stringify($scope.search.search_results));
                   })
                   .catch(function(err){
